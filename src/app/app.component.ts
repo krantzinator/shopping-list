@@ -16,11 +16,14 @@ const LISTS: List[] = [
   template: `
     <h1>{{title}}</h1>
     <div class="lists" *ngFor="let list of lists">
-      <span class="topic">{{list.topic}}</span>
+      <span class="topic"
+        (click)="onSelect(list)"
+        [class.selected]="list === selectedList">
+        {{list.topic}}
+      </span>
       <ul>
         <li class="item" 
-          (click)="onSelect(list)" 
-          [class.selected]="list === selectedList">
+        *ngIf="selectedList">
           {{list.item}}
         </li>
       </ul>
@@ -71,6 +74,7 @@ const LISTS: List[] = [
       top: -3px;
     }
     .lists .topic {
+      cursor: pointer;
       display: inline-block;
       padding: 1em;
       position: relative;
