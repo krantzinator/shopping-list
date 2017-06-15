@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export class List {
   topic: string;
@@ -17,8 +18,8 @@ const LISTS: List[] = [
     <h1>{{title}}</h1>
     <div class="lists" *ngFor="let list of lists">
       <span class="topic"
-        (click)="onSelect(list)"
-        [class.selected]="list === selectedList">
+      (click)="onSelect(list)"
+      [class.selected]="list === selectedList">
         {{list.topic}}
       </span>
       <ul>
